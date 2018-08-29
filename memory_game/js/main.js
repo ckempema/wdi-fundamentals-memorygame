@@ -19,32 +19,47 @@ var cards = [       //Create 4 card objects
     {
         rank: "king",
         suit: "diamonds",
-        cardImage: "images/king-of-diamonds"
+        cardImage: "images/king-of-diamonds.png"
     }
 ];
 var cardsInPlay = [];
 
 var checkForMatch = function(){
-    if(cardsInPlay.length === 2){
-        if(cardsInPlay[0] === cardsInPlay[1]){
-            alert("You found a match!");
-        }   
-        else{
-            alert("Sorry, try again");
-        } 
-    }
+    if(cardsInPlay[0] === cardsInPlay[1]){
+        alert("You found a match!");
+    }   
+    else{
+        alert("Sorry, try again");
+    } 
 }
 
-var flipCard = function(cardId){
+var flipCard = function(){
+    cardId = this.getAttribute('data-id');
     console.log("User flipped "+cards[cardId].rank);
     console.log("Suit "+cards[cardId].suit);
     console.log("Image: "+cards[cardId].cardImage);
     cardsInPlay.push(cards[cardId].rank);
-    checkForMatch();
+
+    this.setAttribute('src', cards[cardId].cardImage);    
+    if(cardsInPlay.length === 2){
+        checkForMatch();
+    }
+    
 }
 
-flipCard(0);
-flipCard(2);
+var createBoard = function(){
+    for(i = 0; i < cards.length; i++) {
+        var cardElement = document.createElement('img');
+        cardElement.setAttribute('src', 'images/back.png');
+        cardElement.setAttribute('data-id', i);
+        cardElement.addEventListener('click', flipCard);
+        document.getElementById('game-board').appendChild(cardElement);
+    }
+}
+
+
+createBoard();
+
 
 
 
