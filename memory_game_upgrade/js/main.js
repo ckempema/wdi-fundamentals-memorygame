@@ -2,21 +2,25 @@
 
 var cards = [       //Create 4 card objects
     {
+        //cardId: 1
         rank: "queen",
         suit: "hearts",
         cardImage: "images/queen-of-hearts.png"
     },
     {
+        //cardId: 2
         rank: "queen",
         suit: "diamonds",
         cardImage: "images/queen-of-diamonds.png"
     },
     {
+        //cardId: 3
         rank: "king",
         suit: "hearts",
         cardImage: "images/king-of-hearts.png",
     },
     {
+        //cardId: 4
         rank: "king",
         suit: "diamonds",
         cardImage: "images/king-of-diamonds.png"
@@ -24,15 +28,6 @@ var cards = [       //Create 4 card objects
 ];
 var cardsInPlay = [];
 var cardsFound = [];
-
-var checkForMatch = function(){
-    if(cards[cardsInPlay[0]].rank === cards[cardsInPlay[1]].rank){
-        console.log("You found a match!");
-    }   
-    else{
-        console.log("Sorry, try again");
-    } 
-}
 
 var flipCard = function(){
     cardId = this.getAttribute('data-id');
@@ -43,7 +38,10 @@ var flipCard = function(){
         cardsInPlay.push(cardId);
 
         if(cardsInPlay.length === 2){ //check if two cards in play match
-            checkForMatch();
+            if(cards[cardsInPlay[0]].rank === cards[cardsInPlay[1]].rank){
+                console.log("You found a match!");
+                this.setAttribute()
+            }
         }
     }
     else if (this.getAttribute('flip-status')==='flipped'){ //reverse a card and remove it from play
