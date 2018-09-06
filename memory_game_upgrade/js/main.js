@@ -1,10 +1,13 @@
 //Back end for memory game per WDI Fundamentals prework
 
+
+//Setup:
 var numCards = 16;       //the total number of cards on the game board
 var cardsInPlay = [];
 var cardsFound = [];
 var matchesFound = 0;
 var movesMade = 0;
+
 
 function Card(rank, suit, type){    //Constructor for a Card Object
     this.rank = rank;
@@ -19,7 +22,7 @@ function Card(rank, suit, type){    //Constructor for a Card Object
     } 
 }
 
-var cards = [                       //Create 8 different card objects
+var deck = [                       //Create the 8 possible card objects
     new Card("queen", "hearts", "color"),
     new Card("queen", "diamonds", "color"),
     new Card("queen", "hearts", "gray"),
@@ -29,7 +32,7 @@ var cards = [                       //Create 8 different card objects
     new Card("king", "hearts", "gray"),
     new Card("king", "hearts", "gray")
 ];
-
+var cards = deck;
 
 var flipCard = function(){          // Flip a card if it gets clicked on, check for matches
     cardType = this.getAttribute('type-id');
@@ -63,15 +66,38 @@ var flipCard = function(){          // Flip a card if it gets clicked on, check 
 
 var setupBoard = function(){
     for(i=0; i<numCards;i++){
-        cardElement = document.getElementById("card-"+i);
-        cardElement.setAttribute('type-id', selectCardType(0));
+        var cardElement = document.createElement('img');
+        cardElement.setAttribute("location", i)
+        cardElement.setAttribute("type-id", selectCardType(0));
         cardElement.setAttribute('flip-status','back');
         cardElement.addEventListener('click', flipCard);
+        document.getElementById("game-board").appendChild(cardElement);
     }
 }
 
+var setDifficulty = function(){
+    diffSelect = this.getAttribute("diff");
+    switch (diffSelect){
+        case "1":
+            numCards = 4;
+            break;
+        case "2": 
+            numCards = 8;
+            break;
+        case "3": 
+            numCards = 12;
+            break;
+        case "4":
+            numCards = 16;
+            break;
+        default:
+            numCards = 18;  
+    }
+    cards = deck.slice(0,Math.floor(numCards/2))
+}
+
 var selectCardType = function(level){               //recursive routine to select a random but available cardtype
-    seed = Math.floor(Math.random()*8)
+    seed = Math.floor(Math.random()*cards.length);
     if(cards[seed].remaining > 0){                  //ensure there are not too many cards of that type already on board
         cards[seed].remaining -= 1;
         return seed;
@@ -94,8 +120,22 @@ var showBoard = function(){                         //Shows the faces of all car
     }
 }
 
+var hideBoard = function(){
+    for(i=0;i<numCards;i++){
+        cardElement = document.getElementById("card-"+i);
+        cardElement.setAttribute("src", "images/back.png");
+        cardElement.setAttribute("flip-status","back");
+    }
+}
+
+
+
+
+//Actual Gameplay
 setupBoard();
-showBoard();
+
+
+
 
 
 

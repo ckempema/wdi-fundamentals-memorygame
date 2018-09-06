@@ -12,7 +12,7 @@ header{
 nav{
     background-color: #00A6B3;
     color: #FFFFFF;
-    padding: 20px 0px;
+    padding: 10px 0px;
     border-bottom: 2px solid transparent;
 }
 
@@ -74,12 +74,8 @@ p{
     font-size: 0;
 }
 
-.button{
-    font-family: raleway;
-    font-size: 20px;
-    text-transform: uppercase;
+#diff-status{
     float: left;
-    margin: 5px 20px;
 }
 
 .display{
@@ -88,6 +84,31 @@ p{
     text-transform:uppercase;
     float: right;
     margin: 5px 20px;
+}
+
+.button{
+    font-family: raleway;
+    font-size: 20px;
+    text-transform: uppercase;
+    float: left;
+    margin: 5px 25px;
+    border-bottom: 2px solid;
+    border-color: #00A6B3;
+}
+
+.diff-button{
+    font-family: raleway;
+    font-size: 20px;
+    text-transform: uppercase;
+    float: left;
+    margin: 5px 5px;
+    border-bottom: 2px solid;
+    border-color: #00A6B3;
+}
+
+.button:hover{
+    border-bottom: 2px solid;
+    border-color: #FFFFFF;
 }
 
 .clearfix:after {
