@@ -23,7 +23,8 @@ main{
 }
 
 img{
-    margin: 40px 8px 0px 8px;
+    /*margin: 40px 8px 0px 8px;*/
+    margin: 8px 8px;
 }
 
 a{
@@ -64,6 +65,31 @@ p{
     font-size: 18px;
 }
 
+.controls:after{
+    visibility: hidden;
+    display: block;
+    content: " ";
+    clear: both;
+    height: 0;
+    font-size: 0;
+}
+
+.button{
+    font-family: raleway;
+    font-size: 20px;
+    text-transform: uppercase;
+    float: left;
+    margin: 5px 20px;
+}
+
+.display{
+    font-family: raleway;
+    font-size: 20px;
+    text-transform:uppercase;
+    float: right;
+    margin: 5px 20px;
+}
+
 .clearfix:after {
     visibility: hidden;
     display: block;
@@ -71,7 +97,7 @@ p{
     clear: both;
     height: 0;
     font-size: 0;
-    }
+}
 
 footer{
     text-transform: uppercase;
@@ -94,5 +120,6 @@ footer{
 
 .name{
     color: #F15B31;
+    font-family: raleway;
     font-weight: 700;
 }
